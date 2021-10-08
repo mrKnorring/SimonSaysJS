@@ -11,3 +11,13 @@ export const HTML = (tag, html, attrs) => {
 	}
 	return (h += html ? `>${html}</${tag}>` : ' />')
 }
+
+// Uses the Fisher-Yates algorithm to reorder the elements of the array.
+export const shuffle = ([...arr]) => {
+	let l = arr.length
+	while (l) {
+		const i = Math.floor(Math.random() * l--)
+		;[arr[l], arr[i]] = [arr[i], arr[l]]
+	}
+	return arr
+}
