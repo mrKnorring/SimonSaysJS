@@ -1,5 +1,5 @@
 export const HTML = (tag, html, attrs) => {
-	// you can skip html param TEST
+	// you can skip html param
 	if (typeof html == 'object') {
 		attrs = html
 		html = null
@@ -10,4 +10,14 @@ export const HTML = (tag, html, attrs) => {
 		h += ` ${attr}='${attrs[attr]}'`
 	}
 	return (h += html ? `>${html}</${tag}>` : ' />')
+}
+
+// Uses the Fisher-Yates algorithm to reorder the elements of the array.
+export const shuffle = ([...arr]) => {
+	let l = arr.length
+	while (l) {
+		const i = Math.floor(Math.random() * l--)
+		;[arr[l], arr[i]] = [arr[i], arr[l]]
+	}
+	return arr
 }
