@@ -1,5 +1,5 @@
 export const HTML = (tag, html, attrs) => {
-	// you can skip html param
+	// you can skip html param TEST
 	if (typeof html == 'object') {
 		attrs = html
 		html = null
