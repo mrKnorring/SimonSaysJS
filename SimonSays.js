@@ -77,3 +77,62 @@ const _findWords = (str) =>
  * @returns 'Test'
  */
 const _capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
+
+/**
+ * Turns a sentence of words to Kebab case
+ *
+ * @param {string} str string
+ *
+ * @example toKebabCase('some-mixed_string With spaces_underscores-and-hyphens')
+ * @returns 'some-mixed-string-with-spaces-underscores-and-hyphens'
+ */
+export const toKebabCase = (str) => this._findWords(str).join('-')
+
+/**
+ * Turns a sentence of words to Snake case
+ *
+ * @param {string} str string
+ *
+ * @example toKebabCase('some-mixed_string With spaces_underscores-and-hyphens')
+ * @returns 'some_mixed_string_with_spaces_underscores_and_hyphens'
+ */
+export const toSnakeCase = (str) => this._findWords(str).join('_')
+
+/**
+ * Turns a sentence of words to Pascal case
+ *
+ * @param {string} str string
+ * @param {boolean} toPascal if result should be in pascal or camel case mode
+ * @param {string} divider character
+ *
+ * @example toPascalCase('some-mixed_string With spaces_underscores-and-hyphens', true)
+ * @returns 'SomeMixedStringWithSpacesUnderscoresAndHyphens'
+ */
+export const toPascalCase = (str, toPascal = true, divider = '') =>
+	this._findWords(str)
+		.map((x, i) => (toPascal || i ? this._capitalize(x) : x))
+		.join(divider)
+
+/**
+ * Turns a sentence of words to Camel case
+ *
+ * @param {string} str string
+ * @param {boolean} toPascal if result should be in pascal or camel case mode
+ * @param {string} divider character
+ *
+ * @example toPascalCase('some-mixed_string With spaces_underscores-and-hyphens', true)
+ * @returns 'someMixedStringWithSpacesUnderscoresAndHyphens'
+ */
+export const toCamelCase = (str) => this.toPascalCase(str, false)
+
+/**
+ * Turns a sentence of words to Title case
+ * 
+ * @param {string} str string 
+ * @param {boolean} toPascal if result should be in pascal or camel case mode 
+ * @param {string} divider character 
+ * 
+ * @example toPascalCase('some-mixed_string With spaces_underscores-and-hyphens', true)
+ * @returns 'Some Mixed String With Spaces Underscores And Hyphens'
+ */
+export const toTitleCase = (str) => this.toPascalCase(str, true, ' ')
