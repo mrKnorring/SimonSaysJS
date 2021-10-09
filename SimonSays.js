@@ -1,7 +1,12 @@
 /**
- * Construct html-string
+ * Constructs html string
  *
- * html('div', 'This is a div', { class: 'success bg', id: 'wrapper' }) => '<div id="wrapper" class="success bg">This is a div</div>'
+ * @param {string} tag tag type
+ * @param {string} html html content
+ * @param {object} attrs attributes, if any
+ *
+ * @example html('div', 'This is a div', { class: 'success bg', id: 'wrapper' })
+ * @returns '<div id="wrapper" class="success bg">This is a div</div>'
  */
 export const html = (tag, html, attrs) => {
 	// you can skip html param
@@ -18,9 +23,12 @@ export const html = (tag, html, attrs) => {
 }
 
 /**
- * Uses the Fisher-Yates algorithm to reorder the elements of the array.
+ * Using the Fisher-Yates algorithm to reorder the elements of the array.
  *
- * shuffle([1, 2, 3]) => [1, 3, 2]
+ * @param {array} arr array to sort
+ *
+ * @example shuffle([1, 2, 3])
+ * @returns [1, 3, 2]
  */
 export const shuffle = ([...arr]) => {
 	let l = arr.length
@@ -32,9 +40,40 @@ export const shuffle = ([...arr]) => {
 }
 
 /**
+ * Masking a string
  *
- * 
- * mask(1234567890) => '******7890'
+ * @param {string} str string to be masked
+ * @param {number} num characters to be left non masked
+ * @param {string} mask mask characters
+ *
+ * @example mask(1234567890)
+ * @returns '******7890'
  */
 export const mask = (str, num = 4, mask = '*') =>
 	`${str}`.slice(-num).padStart(`${str}`.length, mask)
+
+/**
+ * Find words in given sentence
+ *
+ * @param {string} str sentence
+ *
+ * @example _findWords('some-mixed_string With spaces_underscores-and-hyphens')
+ * @returns ['some', 'mixed', 'string', 'with', 'spaces', 'underscores', 'and', 'hyphens']
+ */
+const _findWords = (str) =>
+	str &&
+	str
+		.match(
+			/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g
+		)
+		.map((x) => x.toLowerCase())
+
+/**
+ * Capitalize a string
+ *
+ * @param {string} str word
+ *
+ * @example _capitalize('test')
+ * @returns 'Test'
+ */
+const _capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
