@@ -44,7 +44,7 @@ export const shuffle = ([...arr]) => {
  *
  * @param {string} str string to be masked
  * @param {number} num characters to be left non masked
- * @param {string} mask mask characters
+ * @param {string} mask mask characters test
  *
  * @example mask(1234567890)
  * @returns '******7890'
